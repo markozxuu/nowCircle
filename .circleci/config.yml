@@ -27,7 +27,7 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
-      - run: yarn add now now --no-save
+      - run: yarn global add now now --no-save
       - save_cache:
           paths:
             - node_modules
