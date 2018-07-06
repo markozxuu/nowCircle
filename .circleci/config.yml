@@ -27,7 +27,7 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
-      - run: yarn add now  # Install Now CLI on GitLab CI
+      - run: yarn global add now  # Install Now CLI on GitLab CI
       - save_cache:
           paths:
             - node_modules
