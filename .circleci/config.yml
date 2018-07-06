@@ -26,8 +26,8 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: npm install
-      - run: npm i -g now --no-save  # Install Now CLI on GitLab CI
+      - run: yarn install
+      - run: yarn global add now --no-save  # Install Now CLI on GitLab CI
       - save_cache:
           paths:
             - node_modules
