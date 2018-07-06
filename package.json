@@ -1,0 +1,13 @@
+{
+  "name": "nowcircle",
+  "version": "1.0.0",
+  "description": " Circle CI test with Now 𝚫 ",
+  "main": "index.js",
+  "repository": "git@github.com:MAPESO/nowCircle.git",
+  "author": "Mark Pena <markdrew53@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node ."
+  }
+}
