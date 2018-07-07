@@ -4,11 +4,9 @@
 #
 version: 2
 jobs:
-
-  # deployment in development mode 
   build:
     docker:
-      - image: circleci/node:latest-browsers # basically tells Circle to use Node.js docker runner to deploy the app to Now on every push
+      - image: circleci/node:7.10 # basically tells Circle to use Node.js docker runner to deploy the app to Now on every push
     working_directory: ~/repo
     steps: # A list of steps to be performed
       - checkout
@@ -30,25 +28,4 @@ jobs:
       - run: now -p -t $NOW_TOKEN
     branches:
       ignore:
-        - master
-  
-  deploy_now_production:
-    docker:
-      - image: circleci/node:latest-browsers
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-      - run: yarn install
-      - run: sudo yarn global add now --no-save
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: now -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN
-    branches:
-      only:
         - master
