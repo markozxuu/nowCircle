@@ -31,8 +31,8 @@ jobs:
     branches:
       ignore:
         - master
-  
-  deploy_now_production:
+
+  deploy_prod:
     docker:
       - image: circleci/node:latest-browsers
     working_directory: ~/repo
