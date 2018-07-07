@@ -4,21 +4,12 @@
 #
 version: 2
 jobs:
-  build:
+  deploy:
     docker:
-      # specify the version you desire here
-      - image: circleci/node:7.10
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
+      - image: circleci/node:7.10 # basically tells Circle to use Node.js docker runner to deploy the app to Now on every push
     working_directory: ~/repo
-
-    steps:
+    steps: # A list of steps to be performed
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -32,6 +23,9 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
-      # run deploy!
+
+      # run deploy !! :)
       - run: now -p -t $NOW_TOKEN
+    branches:
+      ignore:
+        - master
