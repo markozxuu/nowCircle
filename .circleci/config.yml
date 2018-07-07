@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  deploy:
+  build:
     docker:
       - image: circleci/node:7.10 # basically tells Circle to use Node.js docker runner to deploy the app to Now on every push
     working_directory: ~/repo
