@@ -4,7 +4,6 @@
 #
 version: 2
 jobs:
-
   # deployment in development mode 
   build:
     docker:
@@ -28,28 +27,3 @@ jobs:
 
       # run deploy !! :)
       - run: now -p -t $NOW_TOKEN
-    branches:
-      only:
-        - develop
-        - /feature-.*/
-
-  deploy_prod:
-    docker:
-      - image: circleci/node:latest-browsers
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-      - run: yarn install
-      - run: sudo yarn global add now --no-save
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: now -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN
-    branches:
-      only:
-        - master
