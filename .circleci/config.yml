@@ -50,5 +50,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: now -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN
     branches:
-      only:
-        - master
+      ignore:
+        - develop
+        - /feature-.*/
