@@ -19,7 +19,6 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
-      - run: sudo yarn global add now --no-save  # Install Now CLI on GitLab CI
       - save_cache:
           paths:
             - node_modules
@@ -31,6 +30,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - run: sudo yarn global add now --no-save  # Install Now CLI on GitLab CI
       - run: now -p -t $NOW_TOKEN
 
 workflows:
