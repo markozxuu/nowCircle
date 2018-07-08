@@ -53,8 +53,7 @@ workflows:
           filters:
             branches:
               only: 
-                - dev
-                - /user-.*/
+                - staging
       - deploy-production:
           requires:
             - build
