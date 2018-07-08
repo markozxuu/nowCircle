@@ -51,8 +51,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-  
-  workflows:
+workflows:
     version: 2
     unscheduled:
       jobs:
