@@ -32,6 +32,15 @@ jobs:
       - checkout
       - run: sudo yarn global add now --no-save  # Install Now CLI on GitLab CI
       - run: now -p -t $NOW_TOKEN
+  
+  deploy-production:
+    docker:
+      - image: circleci/node:latest-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: sudo yarn global add now --now-save
+      - run: now -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN
 
 workflows:
   version: 2
@@ -45,3 +54,11 @@ workflows:
             branches:
               only: 
                 - master
+      - deploy-production:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - develop
+                - /feature-.*/
