@@ -3,7 +3,7 @@ const { createServer } = require('http')
 const port = process.env.PORT || 3000
 
 function webServer(req, res) {
-    res.end('<h1>Hi Markoz :v</h1>')
+    res.end('<h1>Hello World</h1>')
 }
 
 const server = createServer(webServer)
