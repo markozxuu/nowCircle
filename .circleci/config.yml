@@ -34,7 +34,7 @@ jobs:
       - run: now -p -t $NOW_TOKEN
 
 
-  deploy_production:
+  deploy-production:
     docker:
       - image: circleci/node:latest-browsers
     working_directory: ~/repo
